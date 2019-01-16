@@ -1,0 +1,49 @@
+{
+    "1": {
+        "filedirectorypath": "test/app/module/project/",
+        "filename": "schema.js",
+        "className": [
+            "Contact"
+        ],
+        "1": {
+            "CodeToIdentifie": "//Add New Config here",
+            "CodeToChange": "Schema.virtual('user_details', {  ref: 'User',  localField: 'user_id',  foreignField: 'user_id',  justOne: true });Schema.virtual('user_active', {  ref: 'User',  localField: 'project_id',  foreignField: 'user_id',  justOne: true });"
+        }   
+    },
+    "2": {
+        "filedirectorypath": "app/module/creator/",
+        "filename": "schema.js",
+        "className": [
+            "Contact"
+        ],
+        "1": {
+            "CodeToIdentifie": "//Add New Config here",
+            "CodeToChange": "Schema.virtual('creator_user_data', {   ref: 'User',   localField: 'user_id',   foreignField: 'user_id',   justOne: true  })"
+        },
+        "2": {
+            "CodeToIdentifie": "//Add New Config here",
+            "CodeToChange": "Schema.virtual('user_active', {  ref: 'User',  localField: 'project_id',  foreignField: 'user_id',  justOne: true });"
+        }
+    },
+    "2": {
+        "filedirectorypath": "app/module/user/",
+        "filename": "schema.js",
+        "className": [
+            "Contact"
+        ],
+        "1": {
+            "CodeToIdentifie": "//Add New Config here",
+            "CodeToChange": "Schema.virtual('creator_details', {   ref: 'Creator',   localField: 'user_id',   foreignField: 'user_id'});     "
+        },
+        "2": {
+            "CodeToIdentifie": "//Add New Config here",
+            "CodeToChange": "Schema.virtual('projects_details', {   ref: 'Project',   localField: 'user_id',   foreignField: 'user_id'});"
+        },
+        "3": {
+            "CodeToIdentifie": "//Add New Config here",
+            "CodeToChange": " Schema.virtual('users_address', {  ref: 'Address',  localField: 'user_id',  foreignField: 'user_id'});"
+        }
+       
+        
+    }
+}

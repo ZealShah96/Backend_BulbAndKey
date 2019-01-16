@@ -1,0 +1,7 @@
+{
+  "name": "Admin",
+  "description": "Admin Package",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Bulb and Key"
+}

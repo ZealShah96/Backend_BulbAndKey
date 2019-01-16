@@ -1,0 +1,14 @@
+{ 
+  "admin": {
+    "password": "123456789",
+    "role":1,
+    "user_id":1
+  },
+
+    "zeal96": {
+      "password": "123456789",
+      "role":1,
+      "user_id":4
+    }
+  }
+  

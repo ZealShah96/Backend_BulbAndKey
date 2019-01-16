@@ -1,0 +1,1717 @@
+{
+	"variables": [],
+	"info": {
+		"name": "B&K  User  Test",
+		"_postman_id": "0a24f801-1e94-d029-5a48-6001b8a0f84e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User  || Test Api",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User || Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"User || Response There\"] = jsonData != null;",
+							"tests[\"User || Count is not 1 \"] = jsonData.count ==0;",
+							"tests[\"User || Cache is working \"] = jsonData.cachetestppass ==true;",
+							"tests[\"User || request is working properly \"] = jsonData.requesttestpass ==true;",
+							"tests[\"User || No Response Should be there \"] = jsonData.lastow == \"NA\";",
+							"tests[\"User || password hashing is working\"] = jsonData.passwordhashworking == true;",
+							"tests[\"User || password hashing is working\"] = jsonData.passwordhashworkingfailed == false;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/test/zeal",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Name\":\"Zeal Shah1111\",\"Quantity\":50, \"IsDeleted\": false\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || List Of All Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200 \"] = responseCode.code === 200;",
+							"tests[\"User  || Response Data is there \"] = jsonData != null;",
+							"tests[\"User  || Response Data has only 1 \"] = jsonData.length==0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": ""
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Create Redis get cache is working failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"User  || Response There\"] = jsonData != null;",
+							"tests[\"User || Cache is working \"] = jsonData.cachetestppass ==true;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/getcache",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "checkdata",
+						"value": "{\"_id\":37,\"code\":\"Bulb And Key User\",\"total_usage\":0,\"usage_per_customer\":0,\"times_used\":0,\"expiry_date\":\"2018-11-15T05:54:48.708Z\",\"is_primary\":false,\"parent_id\":-1,\"rules\":null,\"status\":false,\"created_date\":\"2018-11-15T05:54:48.708Z\",\"updated_date\":\"2018-11-15T05:54:48.708Z\",\"context\":null,\"is_deleted\":false,\"is_active\":false,\"_id\":\"5bed0b4bb3085c12046078d8\",\"__v\":0,\"id\":\"5bed0b4bb3085c12046078d8\"}",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Key\":\"8858d1f0-e983-11e8-b217-b7040582f225\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Create Redis cache is working",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"User  || Response There\"] = jsonData != null;",
+							"tests[\"User || Cache is working \"] = jsonData.cachetestppass ==true;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/setcache",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "checkdata",
+						"value": "{\"_id\":37,\"code\":\"Bulb And Key User\",\"total_usage\":0,\"usage_per_customer\":0,\"times_used\":0,\"expiry_date\":\"2018-11-15T05:54:48.708Z\",\"is_primary\":false,\"parent_id\":-1,\"rules\":null,\"status\":false,\"created_date\":\"2018-11-15T05:54:48.708Z\",\"updated_date\":\"2018-11-15T05:54:48.708Z\",\"context\":null,\"is_deleted\":false,\"is_active\":false,\"_id\":\"5bed0b4bb3085c12046078d8\",\"__v\":0,\"id\":\"5bed0b4bb3085c12046078d8\"}",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":4,\"phone_no\":\"7984540688\",\"is_active\":true,\"is_deleted\":false}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Create Redis get cache is working",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"User  || Response There\"] = jsonData != null;",
+							"tests[\"User || Cache is working \"] = jsonData.cachetestppass ==true;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/getcache",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "checkdata",
+						"value": "{\"_id\":37,\"code\":\"Bulb And Key User\",\"total_usage\":0,\"usage_per_customer\":0,\"times_used\":0,\"expiry_date\":\"2018-11-15T05:54:48.708Z\",\"is_primary\":false,\"parent_id\":-1,\"rules\":null,\"status\":false,\"created_date\":\"2018-11-15T05:54:48.708Z\",\"updated_date\":\"2018-11-15T05:54:48.708Z\",\"context\":null,\"is_deleted\":false,\"is_active\":false,\"_id\":\"5bed0b4bb3085c12046078d8\",\"__v\":0,\"id\":\"5bed0b4bb3085c12046078d8\"}",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Key\":\"9a9c3970-e982-11e8-b3c2-ff716cf2b381\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Create failure for boolean value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 404\"] = responseCode.code === 404;",
+							"tests[\"User  || Response There\"] = jsonData != null;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/create/0",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":1,\"phone_no\":\"9427965632\",\"is_deleted\":\"bxmnbmncv\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Create failure for Integer value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 404\"] = responseCode.code === 404;",
+							"tests[\"User  || Response There\"] = jsonData != null;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/create/0",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":1,\"phone_no\":\"9427965632\",\"pincode\":\"zeal\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Create failure because of date copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 404\"] = responseCode.code === 404;",
+							"tests[\"User  || Response There\"] = jsonData != null;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/create/0",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":1,\"phone_no\":\"9427965632\",\"created_date\":\" bxmnbmncv\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Create working",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200\"] = responseCode.code === 201;",
+							"tests[\"User  || Response There\"] = jsonData != null;",
+							"tests[\"User  || User  Is Active\"] = jsonData.is_active == true ;",
+							"tests[\"User  || User  is deleted\"] = jsonData.is_deleted == false ;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/create/0",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "checkdata",
+						"value": "{\"_id\":37,\"code\":\"Bulb And Key User\",\"total_usage\":0,\"usage_per_customer\":0,\"times_used\":0,\"expiry_date\":\"2018-11-15T05:54:48.708Z\",\"is_primary\":false,\"parent_id\":-1,\"rules\":null,\"status\":false,\"created_date\":\"2018-11-15T05:54:48.708Z\",\"updated_date\":\"2018-11-15T05:54:48.708Z\",\"context\":null,\"is_deleted\":false,\"is_active\":false,\"_id\":\"5bed0b4bb3085c12046078d8\",\"__v\":0,\"id\":\"5bed0b4bb3085c12046078d8\"}",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":1,\"phone_no\":\"9427965631\",\"is_active\":true,\"is_deleted\":false}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Test Api after 1 add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User || Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"User || Response There\"] = jsonData != null;",
+							"tests[\"User || Count is not 1 \"] = jsonData.count ==1;",
+							"tests[\"User || Cache is working \"] = jsonData.cachetestppass ==true;",
+							"tests[\"User || request is working properly \"] = jsonData.requesttestpass ==true;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{localUrl}}/api/user/test/zeal",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Name\":\"Zeal Shah1111\",\"Quantity\":50, \"IsDeleted\": false\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Patch id failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 404\"] = responseCode.code === 404;",
+							"tests[\"User  || Response There\"] = jsonData != null;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/patch/1",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "fields",
+						"value": "_id name quantity options user_id userdetail useractive",
+						"description": ""
+					},
+					{
+						"key": "populate",
+						"value": "userdetails  useractive",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\": 1,\n    \"code\": \"Bulb And Key User\",\n    \"total_usage\": 0,\n    \"usage_per_customer\": 0,\n    \"times_used\": 0,\n    \"expiry_date\": \"2018-11-13T11:18:07.789Z\",\n    \"is_primary\": false,\n    \"parent_id\": -1,\n    \"rules\": null,\n    \"status\": false,\n    \"created_date\": \"2018-11-13T11:18:07.789Z\",\n    \"updated_date\": \"2018-11-13T11:18:07.789Z\",\n    \"context\": null,\n    \"is_deleted\": true,\n    \"is_active\": true,\n    \"_id\": \"5beab302d4cfed0f103d153e\",\n    \"__v\": 0,\n    \"id\": \"5beab302d4cfed0f103d153e\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Patch bool failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 404\"] = responseCode.code === 404;",
+							"tests[\"User  || Response There\"] = jsonData != null;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/patch/1",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "fields",
+						"value": "_id name quantity options user_id userdetail useractive",
+						"description": ""
+					},
+					{
+						"key": "populate",
+						"value": "userdetails  useractive",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\": 1,\n    \"code\": \"Bulb And Key User\",\n    \"total_usage\": 0,\n    \"usage_per_customer\": 0,\n    \"times_used\": 0,\n    \"expiry_date\": \"2018-11-13T11:18:07.789Z\",\n    \"is_primary\": false,\n    \"parent_id\": -1,\n    \"rules\": null,\n    \"status\": false,\n    \"created_date\": \"2018-11-13T11:18:07.789Z\",\n    \"updated_date\": \"2018-11-13T11:18:07.789Z\",\n    \"context\": null,\n    \"is_deleted\": true,\n    \"is_active\": \"bmncxv\",\n    \"__v\": 0\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Patch integer failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 404\"] = responseCode.code === 404;",
+							"tests[\"User  || Response There\"] = jsonData != null;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/patch/1",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "fields",
+						"value": "_id name quantity options user_id userdetail useractive",
+						"description": ""
+					},
+					{
+						"key": "populate",
+						"value": "userdetails  useractive",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"otp\": \"nxcb mnbxzc\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Patch working",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"User  || Response There\"] = jsonData != null;",
+							"tests[\"User  || User  Is Active change to false\"] = jsonData.is_active == false ;",
+							"tests[\"User  || User  is deleted should not change till now\"] = jsonData.is_deleted == false ;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/patch/1",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "fields",
+						"value": "_id name quantity options user_id userdetail useractive",
+						"description": ""
+					},
+					{
+						"key": "populate",
+						"value": "userdetails  useractive",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"is_active\": false\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Test Api after patch only record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User || Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"User || Response There\"] = jsonData != null;",
+							"tests[\"User || Count is not 1 \"] = jsonData.count ==0;",
+							"tests[\"User || Cache is working \"] = jsonData.cachetestppass ==true;",
+							"tests[\"User || request is working properly \"] = jsonData.requesttestpass ==true;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{localUrl}}/api/user/test/zeal",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Name\":\"Zeal Shah1111\",\"Quantity\":50, \"IsDeleted\": false\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || delete_request_failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 400 bad request\"] = responseCode.code === 400;",
+							"tests[\"User  || Response There\"] = jsonData != null;",
+							"tests[\"User  || User  Is Active\"] = jsonData.is_active == undefined ;",
+							"tests[\"User  || User  is deleted\"] = jsonData.is_deleted == undefined ;",
+							"tests[\"User  || delete requested bad\"] = jsonData == \"There is no record to delete for id\" ;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/delete/500",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  ||delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"User  || Response There\"] = jsonData != null;",
+							"tests[\"User  || User  Is deActive\"] = jsonData[0].is_active == false;",
+							"tests[\"User  || User  is deleted\"] = jsonData[0].is_deleted == true ;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/delete/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Test Api after deleting only record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User || Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"User || Response There\"] = jsonData != null;",
+							"tests[\"User || Count is not 1 \"] = jsonData.count ==0;",
+							"tests[\"User || Cache is working \"] = jsonData.cachetestppass ==true;",
+							"tests[\"User || request is working properly \"] = jsonData.requesttestpass ==true;",
+							"tests[\"User || No Response Should be there \"] = jsonData.lastow == \"NA\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/api/user/test/zeal",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Name\":\"Zeal Shah1111\",\"Quantity\":50, \"IsDeleted\": false\n\t\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Mobile phone is exists or not",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							"",
+							"tests[\"User  || check should be in 1 or 0\"] = jsonData.exists==0 || jsonData.exists == 1;",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/web/user/check",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"phone_no\":9427965632}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Login User Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200 \"] = responseCode.code === 200;",
+							"tests[\"User  || Response Data is there \"] = jsonData != null;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/web/user/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":9427965632,\"password\":\"zealshah1996@\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Login User failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200 \"] = responseCode.code === 200;",
+							"tests[\"User  || Response Data is there \"] = jsonData != null;",
+							"tests[\"User  || Response Data has only 1 \"] = jsonData.length==0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/user/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":9427965632,\"pass\":\"bulbandkey1996@\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Log in OTP User Success ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							"tests[\"User  || There should be otp length 6\"] = jsonData.OTP.length >5;",
+							"tests[\"User  || There should be more then 100000\"] = jsonData.OTP > 100000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/user/loginotp",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "token  30a4dc00-eefc-11e8-80c7-ad1df9cf17bf",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"phone_no\":1234567890}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Log in with OTP User  Success ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200 \"] = responseCode.code === 200;",
+							"tests[\"User  || Response Data is there \"] = jsonData != null;",
+							"tests[\"User  || Response Data has only 1 \"] = jsonData.length==0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/user/loginwithotp",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "token  1234",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"phone_no\":9427965632,\"otp\":411021}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Sign up User  Success ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || Status code is 200 \"] = responseCode.code === 201;",
+							"tests[\"User  || Response Data is there \"] = jsonData != null;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/web/user/signup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstname\":\"zeal\",\r\n        \"lastname\":\"Test\",\r\n        \"user_id\":9,\r\n        \"phone_no\":\"1234567890\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Forget Password OTP User Success ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							"tests[\"User  || There should be otp length 6\"] = jsonData.OTP.length >5;",
+							"tests[\"User  || There should be more then 100000\"] = jsonData.OTP > 100000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/web/user/forgetpasswordotp",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"phone_no\":1234567890}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Sign up  OTP User Success ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							"tests[\"User  || There should be otp length 6\"] = jsonData.OTP.length >5;",
+							"tests[\"User  || There should be more then 100000\"] = jsonData.OTP > 100000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/web/user/signupotp",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"phone_no\":9427965899}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Sign up with  OTP User Success ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							"tests[\"User  || There should be otp length 6\"] = jsonData.OTP.length >5;",
+							"tests[\"User  || There should be more then 100000\"] = jsonData.OTP > 100000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/web/user/signupwithotp",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"phone_no\":1234567891,\"otp\":411021}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  ||Forget Password OTP User Success ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							"tests[\"User  || There should be otp length 6\"] = jsonData.data.result.otp=='sent';",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/web/user/forgetpasswordotp",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"phone_no\":1234567890}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  ||Forget Password change with OTP User Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							"tests[\"User  || There should be otp length 6\"] = jsonData.OTP.length >5;",
+							"tests[\"User  || There should be more then 100000\"] = jsonData.OTP > 100000;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/web/user/forgetpassword",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":9,\"otp\":3256,\"new_password\":\"zealshah1996@\",\"confirm_password\":\"zealshah1996@\"}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "User  ||change Password change without OTP User Success (After Log in)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/user/changepassword",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":3,\"current_password\":\"zealshah99@\",\"new_password\":\"zealshah199@\",\"confirm_password\":\"zealshah199@\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Profile of user ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/user/profile",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":3}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || update profile of user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/user/saveprofile",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":3,\"firstname\":\"zeal\",\"lastname\":\"kkkkkk\",\"phone_no\":7387251559,\"email\":\"test@gmail.com\",\"password\":\"vvnbvmnbvmnbvnbvn\"}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  ||Users address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/web/user/getaddress",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":3,\"pageValue\":1}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  ||Users edit address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/api/address/create/0",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"address_id\":1}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  ||Users save address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/user/saveaddress",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"address_id\":2,\n    \"user_id\": 3,\n    \"flat_no\": \"fffffffff\",\n    \"street\": \"Bulb And Key Address\",\n    \"area\": \"Bulb And Key Address\",\n    \"city\": \"Bulb And Key Address\",\n    \"state\": \"Bulb And Key Address\",\n    \"landmark\": \"NA\",\n    \"pincode\": null,\n    \"is_active\": false,\n    \"created_date\": \"2018-11-19T11:14:01.710Z\",\n    \"updated_date\": \"2018-11-19T11:14:01.710Z\"\n\t\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  ||Users remove address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/user/removeaddress",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"address_id\":1}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Projects of user ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/project/view",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"project_id\":1,\"user_id\":3}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User  || Get Project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"",
+							"tests[\"User  || There should be 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{localUrl}}/web/user/getprojects",
+				"method": "POST",
+				"header": [
+					{
+						"key": "condition",
+						"value": "{\"is_active\": true}",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "fields",
+						"value": "password user_id firstname",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\":11,\"pageValue\":2}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
